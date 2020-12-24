@@ -1,0 +1,2 @@
+oss2==2.13.1
+dataclasses-json==0.5.2

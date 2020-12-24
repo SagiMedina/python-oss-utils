@@ -1,0 +1,3 @@
+include VERSION
+include README.md
+include python_oss_utils/ossutil
