@@ -19,7 +19,7 @@ class OSSUtils:
     def get_bucket_session(self, bucket: str):
         return self.oss_session.create_oss_bucket_api(bucket)
 
-    def get_nested_files_list_from_oss_dir(self, oss_dir_path: str) -> list[str]:
+    def get_nested_files_list_from_oss_dir(self, oss_dir_path: str) -> List[str]:
         return self.oss_session.get_nested_files_list_from_oss_dir(oss_dir_path)
 
     def sign_file_url(self, oss_path_to_sign: Union[str, OSSSignRequest]):
