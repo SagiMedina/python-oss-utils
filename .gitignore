@@ -8,3 +8,4 @@ python_oss_utils/ossutil
 
 *.iml
 *.egg-info
+*.env

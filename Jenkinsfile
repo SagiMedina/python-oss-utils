@@ -7,5 +7,5 @@ miilPipeline {
     splitCount = 1
     pythonPackages = '.'
     // (optional) if you want to pass a .env file (environment variables) to the Docker container of microservice
-    dotEnvFileCredentialsId = "OSS_UTILS_PYTHON_SDK_DOTENV"
+     dotEnvFileCredentialsId = "OTS_UTILS_PYTHON_SDK_DOTENV"
 }
