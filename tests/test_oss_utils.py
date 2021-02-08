@@ -60,6 +60,10 @@ class MyTestCase(unittest.TestCase):
         res = self.oss_utils.upload_folder_content(TEST_FOLDER, LOCAL_DOWNLOAD_PATH)
         assert res.num_of_files > 0
         os.rename(f"{OSS_UTIL_PATH}_temp", OSS_UTIL_PATH)
+        oss_path = parse_oss_path(TEST_FOLDER)
+        uploaded_files = self.oss_utils.get_nested_files_list_from_oss_dir(f"{TEST_FOLDER}datasets")
+        self.oss_utils.get_bucket_session(oss_path.bucket).batch_delete_objects(
+            [parse_oss_path(upfile).key for upfile in uploaded_files])
 
     def test_download_folder_with_ossutil(self):
         res = self.oss_utils.download_folder(TEST_FOLDER, LOCAL_DOWNLOAD_PATH)
@@ -69,6 +73,10 @@ class MyTestCase(unittest.TestCase):
         self.oss_utils.download_folder(TEST_FOLDER, LOCAL_DOWNLOAD_PATH)
         res = self.oss_utils.upload_folder_content(TEST_FOLDER, LOCAL_DOWNLOAD_PATH)
         assert res.num_of_files > 0
+        oss_path = parse_oss_path(TEST_FOLDER)
+        uploaded_files = self.oss_utils.get_nested_files_list_from_oss_dir(f"{TEST_FOLDER}datasets")
+        self.oss_utils.get_bucket_session(oss_path.bucket).batch_delete_objects(
+            [parse_oss_path(upfile).key for upfile in uploaded_files])
 
 
 if __name__ == '__main__':

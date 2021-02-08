@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Optional
 
 import oss2
+from oss2 import Bucket
 from oss2.models import ListObjectsV2Result
 
 from python_oss_utils.models import OSSDownloadRequest, OSSConfig, _OSSSessionAuth, _OSSSessionConf, OSSPath, \
@@ -43,7 +44,7 @@ class _OSSSession:
         return oss2.AuthV2(access_key_id=self.session_auth.access_key_id,
                            access_key_secret=self.session_auth.access_key_secret)
 
-    def create_oss_bucket_api(self, bucket: str):
+    def create_oss_bucket_api(self, bucket: str) -> Bucket:
         if bucket in self.session_buckets:
             return self.session_buckets.get(bucket)
         oss_session = oss2.Session()

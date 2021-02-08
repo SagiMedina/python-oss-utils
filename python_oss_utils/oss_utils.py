@@ -4,6 +4,8 @@ import time
 from pathlib import Path
 from typing import List, Union, Optional
 
+from oss2 import Bucket
+
 from python_oss_utils.helpers import _OSSSession, OSS_UTIL_PATH, parse_oss_path
 from python_oss_utils.models import OSSConfig, OSSDownloadRequest, OSSDownloadResults, \
     OSSUploadResults, OSSUploadObject, OSSSignRequest, OSSDownloadFolderResults
@@ -13,6 +15,12 @@ from python_oss_utils.utils import get_content_folder_list
 class OSSUtils:
     def __init__(self, config: OSSConfig):
         self.oss_session = _OSSSession(config)
+
+    def get_bucket_session(self, bucket: str):
+        return self.oss_session.create_oss_bucket_api(bucket)
+
+    def get_nested_files_list_from_oss_dir(self, oss_dir_path: str) -> list[str]:
+        return self.oss_session.get_nested_files_list_from_oss_dir(oss_dir_path)
 
     def sign_file_url(self, oss_path_to_sign: Union[str, OSSSignRequest]):
         oss_sign_request = oss_path_to_sign
