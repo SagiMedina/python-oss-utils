@@ -1,6 +1,7 @@
 import hashlib
 import os
 from pathlib import Path
+from typing import List
 
 
 def encrypt_string(hash_string) -> str:
@@ -8,7 +9,7 @@ def encrypt_string(hash_string) -> str:
     return sha_signature
 
 
-def get_content_folder_list(dir_path) -> list[str]:
+def get_content_folder_list(dir_path) -> List[str]:
     files_list = []
     for object_in_dir in os.walk(dir_path):
         if object_in_dir[2]:
