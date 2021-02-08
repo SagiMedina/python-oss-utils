@@ -10,6 +10,7 @@ TEST_FOLDER = 'oss://miil-pc-sh/datasets/tmp/test/'
 LOCAL_DOWNLOAD_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), "downloads")
 
 
+@unittest.skip("Need to fix Auth keys on Jenkins")
 class MyTestCase(unittest.TestCase):
 
     @classmethod
