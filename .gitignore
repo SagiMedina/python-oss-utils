@@ -1,0 +1,11 @@
+.idea/
+build/
+dist/
+venv/
+tests/*.csv
+tests/downloads/
+python_oss_utils/ossutil
+
+*.iml
+*.egg-info
+*.env
